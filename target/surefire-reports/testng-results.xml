@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="FillFormTest" duration-ms="13786" started-at="2021-08-06T01:29:56 EDT" finished-at="2021-08-06T01:30:10 EDT">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="13786" started-at="2021-08-06T01:29:56 EDT" finished-at="2021-08-06T01:30:10 EDT">
+      <class name="FillFormTest">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:FillFormTest@6a4f787b]" name="setUp" is-config="true" duration-ms="2607" started-at="2021-08-06T01:29:56 EDT" finished-at="2021-08-06T01:29:59 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="fillFormForStudentLoan()[pri:0, instance:FillFormTest@6a4f787b]" name="fillFormForStudentLoan" duration-ms="10313" started-at="2021-08-06T01:29:59 EDT" finished-at="2021-08-06T01:30:09 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- fillFormForStudentLoan -->
+        <test-method status="PASS" signature="tiersDown()[pri:0, instance:FillFormTest@6a4f787b]" name="tiersDown" is-config="true" duration-ms="818" started-at="2021-08-06T01:30:09 EDT" finished-at="2021-08-06T01:30:10 EDT">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tiersDown -->
+      </class> <!-- FillFormTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- FillFormTest -->
+</testng-results>
