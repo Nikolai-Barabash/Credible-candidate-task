@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button class="button" id="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite</span>
+      <span class="top-banner-font-1">1 suite, 1 failed test</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -39,8 +39,8 @@
       <div class="suite">
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
-            <a href="#" class="navigator-link" panel-name="suite-FillFormTest">
-              <span class="suite-name border-passed">FillFormTest</span>
+            <a href="#" class="navigator-link" panel-name="suite-StudentLoanFormTest">
+              <span class="suite-name border-failed">StudentLoanFormTest</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -50,37 +50,37 @@
             <div class="suite-section-content">
               <ul>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="test-xml-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="test-xml-StudentLoanFormTest">
                     <span>[unset file name]</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="testlist-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="testlist-StudentLoanFormTest">
                     <span class="test-stats">1 test</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="group-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="group-StudentLoanFormTest">
                     <span>0 groups</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="times-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="times-StudentLoanFormTest">
                     <span>Times</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="reporter-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="reporter-StudentLoanFormTest">
                     <span>Reporter output</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="ignored-methods-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="ignored-methods-StudentLoanFormTest">
                     <span>Ignored methods</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
-                  <a href="#" class="navigator-link " panel-name="chronological-FillFormTest">
+                  <a href="#" class="navigator-link " panel-name="chronological-StudentLoanFormTest">
                     <span>Chronological view</span>
                   </a> <!-- navigator-link  -->
                 </li>
@@ -93,21 +93,21 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">1 method,   1 passed</span>
+                    <span class="method-stats">1 method, 1 failed,   </span>
                   </li>
                   <li>
-                    <span class="method-list-title passed">Passed methods</span>
-                    <span class="show-or-hide-methods passed">
-                      <a href="#" panel-name="suite-FillFormTest" class="hide-methods passed suite-FillFormTest"> (hide)</a> <!-- hide-methods passed suite-FillFormTest -->
-                      <a href="#" panel-name="suite-FillFormTest" class="show-methods passed suite-FillFormTest"> (show)</a> <!-- show-methods passed suite-FillFormTest -->
+                    <span class="method-list-title failed">Failed methods</span>
+                    <span class="show-or-hide-methods failed">
+                      <a href="#" panel-name="suite-StudentLoanFormTest" class="hide-methods failed suite-StudentLoanFormTest"> (hide)</a> <!-- hide-methods failed suite-StudentLoanFormTest -->
+                      <a href="#" panel-name="suite-StudentLoanFormTest" class="show-methods failed suite-StudentLoanFormTest"> (show)</a> <!-- show-methods failed suite-StudentLoanFormTest -->
                     </span>
-                    <div class="method-list-content passed suite-FillFormTest">
+                    <div class="method-list-content failed suite-StudentLoanFormTest">
                       <span>
-                        <img width="3%" src="passed.png"/>
-                        <a href="#" class="method navigator-link" panel-name="suite-FillFormTest" title="FillFormTest" hash-for-method="fillFormForStudentLoan">fillFormForStudentLoan</a> <!-- method navigator-link -->
+                        <img width="3%" src="failed.png"/>
+                        <a href="#" class="method navigator-link" panel-name="suite-StudentLoanFormTest" title="StudentLoanFormTest" hash-for-method="testStudentLoanForm">testStudentLoanForm</a> <!-- method navigator-link -->
                       </span>
                       <br/>
-                    </div> <!-- method-list-content passed suite-FillFormTest -->
+                    </div> <!-- method-list-content failed suite-StudentLoanFormTest -->
                   </li>
                 </ul>
               </div> <!-- suite-section-content -->
@@ -118,43 +118,56 @@
     </div> <!-- navigator-root -->
     <div class="wrapper">
       <div class="main-panel-root">
-        <div panel-name="suite-FillFormTest" class="panel FillFormTest">
-          <div class="suite-FillFormTest-class-passed">
+        <div panel-name="suite-StudentLoanFormTest" class="panel StudentLoanFormTest">
+          <div class="suite-StudentLoanFormTest-class-failed">
             <div class="main-panel-header rounded-window-top">
-              <img src="passed.png"/>
-              <span class="class-name">FillFormTest</span>
+              <img src="failed.png"/>
+              <span class="class-name">StudentLoanFormTest</span>
             </div> <!-- main-panel-header rounded-window-top -->
             <div class="main-panel-content rounded-window-bottom">
               <div class="method">
                 <div class="method-content">
-                  <a name="fillFormForStudentLoan">
-                  </a> <!-- fillFormForStudentLoan -->
-                  <span class="method-name">fillFormForStudentLoan</span>
+                  <a name="testStudentLoanForm">
+                  </a> <!-- testStudentLoanForm -->
+                  <span class="method-name">testStudentLoanForm</span>
+                  <div class="stack-trace">org.openqa.selenium.TimeoutException: Expected condition failed: waiting for element to be clickable: [[ChromeDriver: chrome on WINDOWS (124137c2bd7af140a39b41489af7554e)] -&gt; xpath: (//ul//li)[1]] (tried for 5 second(s) with 500 milliseconds interval)
+Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
+System info: host: &apos;BARABASH-LAPTOP&apos;, ip: &apos;172.31.112.1&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_202&apos;
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 92.0.4515.131, chrome: {chromedriverVersion: 92.0.4515.107 (87a818b10553..., userDataDir: C:\Users\barab\AppData\Loca...}, goog:chromeOptions: {debuggerAddress: localhost:58694}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 124137c2bd7af140a39b41489af7554e
+	at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:95)
+	at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:272)
+	at pages.StudentLoanPage.addCollege(StudentLoanPage.java:161)
+	at StudentLoanFormTest.testStudentLoanForm(StudentLoanFormTest.java:59)
+	at java.util.ArrayList.forEach(ArrayList.java:1257)
+... Removed 36 stack frames
+</div> <!-- stack-trace -->
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-FillFormTest-class-passed -->
-        </div> <!-- panel FillFormTest -->
-        <div panel-name="test-xml-FillFormTest" class="panel">
+          </div> <!-- suite-StudentLoanFormTest-class-failed -->
+        </div> <!-- panel StudentLoanFormTest -->
+        <div panel-name="test-xml-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
 &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
 &lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
-&lt;suite verbose=&quot;0&quot; name=&quot;FillFormTest&quot;&gt;
+&lt;suite verbose=&quot;0&quot; name=&quot;StudentLoanFormTest&quot;&gt;
   &lt;test thread-count=&quot;5&quot; verbose=&quot;0&quot; name=&quot;Command line test&quot;&gt;
     &lt;classes&gt;
-      &lt;class name=&quot;FillFormTest&quot;/&gt;
+      &lt;class name=&quot;StudentLoanFormTest&quot;/&gt;
     &lt;/classes&gt;
   &lt;/test&gt; &lt;!-- Command line test --&gt;
-&lt;/suite&gt; &lt;!-- FillFormTest --&gt;
+&lt;/suite&gt; &lt;!-- StudentLoanFormTest --&gt;
             </pre>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="testlist-FillFormTest" class="panel">
+        <div panel-name="testlist-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Tests for FillFormTest</span>
+            <span class="header-content">Tests for StudentLoanFormTest</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <ul>
@@ -164,22 +177,22 @@
             </ul>
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="group-FillFormTest" class="panel">
+        <div panel-name="group-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Groups for FillFormTest</span>
+            <span class="header-content">Groups for StudentLoanFormTest</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="times-FillFormTest" class="panel">
+        <div panel-name="times-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Times for FillFormTest</span>
+            <span class="header-content">Times for StudentLoanFormTest</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="times-div">
               <script type="text/javascript">
-suiteTableInitFunctions.push('tableData_FillFormTest');
-function tableData_FillFormTest() {
+suiteTableInitFunctions.push('tableData_StudentLoanFormTest');
+function tableData_StudentLoanFormTest() {
 var data = new google.visualization.DataTable();
 data.addColumn('number', 'Number');
 data.addColumn('string', 'Method');
@@ -187,52 +200,50 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(1);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'fillFormForStudentLoan')
-data.setCell(0, 2, 'FillFormTest')
-data.setCell(0, 3, 10313);
-window.suiteTableData['FillFormTest']= { tableData: data, tableDiv: 'times-div-FillFormTest'}
+data.setCell(0, 1, 'testStudentLoanForm')
+data.setCell(0, 2, 'StudentLoanFormTest')
+data.setCell(0, 3, 25840);
+window.suiteTableData['StudentLoanFormTest']= { tableData: data, tableDiv: 'times-div-StudentLoanFormTest'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 10 seconds</span>
-              <div id="times-div-FillFormTest">
-              </div> <!-- times-div-FillFormTest -->
+              <span class="suite-total-time">Total running time: 25 seconds</span>
+              <div id="times-div-StudentLoanFormTest">
+              </div> <!-- times-div-StudentLoanFormTest -->
             </div> <!-- times-div -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="reporter-FillFormTest" class="panel">
+        <div panel-name="reporter-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">Reporter output for FillFormTest</span>
+            <span class="header-content">Reporter output for StudentLoanFormTest</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="ignored-methods-FillFormTest" class="panel">
+        <div panel-name="ignored-methods-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">0 ignored methods</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
-        <div panel-name="chronological-FillFormTest" class="panel">
+        <div panel-name="chronological-StudentLoanFormTest" class="panel">
           <div class="main-panel-header rounded-window-top">
             <span class="header-content">Methods in chronological order</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <div class="chronological-class">
-              <div class="chronological-class-name">FillFormTest</div> <!-- chronological-class-name -->
+              <div class="chronological-class-name">StudentLoanFormTest</div> <!-- chronological-class-name -->
               <div class="configuration-class before">
                 <span class="method-name">setUp</span>
                 <span class="method-start">0 ms</span>
               </div> <!-- configuration-class before -->
               <div class="test-method">
-                <span class="method-name">fillFormForStudentLoan</span>
-                <span class="method-start">2632 ms</span>
+                <img src="failed.png">
+                </img>
+                <span class="method-name">testStudentLoanForm</span>
+                <span class="method-start">3438 ms</span>
               </div> <!-- test-method -->
-              <div class="configuration-class after">
-                <span class="method-name">tiersDown</span>
-                <span class="method-start">12948 ms</span>
-              </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->
       </div> <!-- main-panel-root -->

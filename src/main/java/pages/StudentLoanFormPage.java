@@ -1,6 +1,5 @@
 package pages;
 
-import org.apache.tools.ant.types.resources.comparators.Date;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-
-public class StudentLoanPage {
+public class StudentLoanFormPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
@@ -56,7 +52,7 @@ public class StudentLoanPage {
     @FindBy(xpath = "//input[@name='studentEducation.name']")
     private WebElement collegeNameField;
 
-    @FindBy(xpath = "(//ul//li)[1]")
+    @FindBy(xpath = "(//div[@data-test-id='search-results']/ul/li/div/span)[1]")
     private WebElement collegeSearchResult;
 
     @FindBy(xpath = "//*[text()=\"Bachelor's\"]")
@@ -92,140 +88,122 @@ public class StudentLoanPage {
     @FindBy(xpath = "//input[@id='studentRequestedLoanAmount']")
     private WebElement loanAmountField;
 
-    @FindBy(xpath = "//input[@name='email']")
-    private WebElement emailField;
-
-    @FindBy(xpath = "//input[@name='password']")
-    private WebElement passwordField;
-
-    public StudentLoanPage(WebDriver driver) {
+    public StudentLoanFormPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
         wait = new WebDriverWait(driver, 5);
     }
 
-    public void selectStudentLoanProduct() {
-        studentLoanButton.click();
-    }
-
-    public void goToForm() {
-        getStartedButton.click();
-    }
-
-    public void chooseRole() {
+    public StudentLoanFormPage chooseRole() {
         studentRoleButton.click();
+        return this;
     }
 
-    public void addStudentFirstName(String firstName) {
+    public StudentLoanFormPage addStudentName(String firstName, String lastName) {
         wait.until(ExpectedConditions.elementToBeClickable(studentFirstNameField));
         studentFirstNameField.sendKeys(firstName);
-    }
-
-    public void addStudentLastName(String lastName) {
         studentLastNameField.sendKeys(lastName);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void continueToNextStep() {
+    public StudentLoanFormPage continueToNextStep() {
         continueButton.click();
+        return this;
     }
 
-    public void addStudentDob(String dob) {
+    public StudentLoanFormPage addStudentDob(String dob) {
         studentDobField.sendKeys(dob);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void addPhoneNumber(String phoneNumber) {
+    public StudentLoanFormPage addPhoneNumber(String phoneNumber) {
         studentPhoneNumberField.sendKeys(phoneNumber);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void addAddress(String address, String unitNumber) {
+    public StudentLoanFormPage addAddress(String address, String unitNumber) {
         wait.until(ExpectedConditions.elementToBeClickable(addressField));
         addressField.sendKeys(address);
         wait.until(ExpectedConditions.elementToBeClickable(addressOption));
         addressOption.click();
         addressUnitField.sendKeys(unitNumber);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void chooseCitizenshipStatus(boolean citizenship) {
+    public StudentLoanFormPage chooseCitizenshipStatus(boolean citizenship) {
         if (citizenship) {
             wait.until(ExpectedConditions.elementToBeClickable(confirmUsCitizenshipButton));
             confirmUsCitizenshipButton.click();
         }
+        return this;
     }
 
-    public void addCollege(String collegeName) {
+    public StudentLoanFormPage addCollege(String collegeName) {
+        //wait.until(ExpectedConditions.elementToBeClickable(collegeNameField));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         collegeNameField.sendKeys(collegeName);
         wait.until(ExpectedConditions.elementToBeClickable(collegeSearchResult));
         collegeSearchResult.click();
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void chooseCollegeDegree(String degree) {
+    public StudentLoanFormPage chooseCollegeDegree(String degree) {
+        wait.until(ExpectedConditions.elementToBeClickable(aimedCollegeDegree));
         aimedCollegeDegree.click();
+        return this;
     }
 
-    public void addExpectedGraduationDate(String graduationDate) {
+    public StudentLoanFormPage addExpectedGraduationDate(String graduationDate) {
         expectedGraduationDateField.sendKeys(graduationDate);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void addMonthlyHousingPayment(String housingPayment) {
-
-        wait.until(ExpectedConditions.visibilityOf(monthlyHousingPaymentField));
+    public StudentLoanFormPage addMonthlyHousingPayment(String housingPayment) {
+        wait.until(ExpectedConditions.elementToBeClickable(monthlyHousingPaymentField));
         monthlyHousingPaymentField.sendKeys(housingPayment);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void chooseEmploymentStatus() {
+    public StudentLoanFormPage chooseEmploymentStatus() {
         wait.until(ExpectedConditions.elementToBeClickable(employmentStatusButton));
         employmentStatusButton.click();
+        return this;
     }
 
-    public void addEmploymentIncome(String incomeType, String annualSalary) {
+    public StudentLoanFormPage addEmploymentIncome(String incomeType, String annualSalary) {
         Select selectIncome = new Select(incomeTypeDropDown);
         selectIncome.selectByValue(incomeType);
         annualSalaryField.sendKeys(annualSalary);
-        continueToNextStep();
+        return continueToNextStep();
     }
 
-    public void addPreviousEmploymentIncome(String income) {
-        wait.until(ExpectedConditions.elementToBeClickable(previousIncomeField));
-        previousIncomeField.sendKeys(income);
-        continueToNextStep();
-    }
+//    public StudentLoanFormPage addPreviousEmploymentIncome(String income) {
+//        wait.until(ExpectedConditions.elementToBeClickable(previousIncomeField));
+//        previousIncomeField.sendKeys(income);
+//        return continueToNextStep();
+//    }
 
-    public void addCurrentEnrollmentStatus() {
+    public StudentLoanFormPage addCurrentEnrollmentStatus() {
         currentEnrollmentStatusButton.click();
+        return this;
     }
 
-    public void chooseYearOfStudy() {
+    public StudentLoanFormPage chooseYearOfStudy() {
         currentYearOfStudyButton.click();
+        return this;
     }
 
-    public void chooseSchoolTerm() {
+    public StudentLoanFormPage chooseSchoolTerm() {
         schoolTermButton.click();
+        return this;
     }
 
-    public void addLoanAmount(String amount) {
-        loanAmountField.sendKeys();
-    }
-
-    public void addEmailID() {
-        emailField.sendKeys(generateEmilId());
-    }
-
-    public void addPassword(String password) {
-        passwordField.sendKeys(password);
-    }
-
-    public String generateEmilId(){
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        Date date = new Date();
-        String timeStamp = dateFormat.format(date);
-        String emailId = "Mikalai" + timeStamp + "@credible.com";
-        return emailId;
+    public StudentLoanFormPage addLoanAmount(String amount) {
+        loanAmountField.sendKeys(amount);
+        return this;
     }
 }
