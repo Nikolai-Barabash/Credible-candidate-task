@@ -7,15 +7,12 @@ import pages.MainPage;
 import pages.SignUpPage;
 import pages.StudentLoanFormPage;
 
-import java.util.concurrent.TimeUnit;
-
 public class StudentLoanFormTest {
 
     private WebDriver driver;
     private StudentLoanFormPage studentLoanFoamPage;
     private MainPage mainPage;
     private SignUpPage signUpPage;
-
 
     public static final int TIMEOUT = 5;
 
@@ -30,9 +27,8 @@ public class StudentLoanFormTest {
     public static final String COLLEGE_DEGREE = "Bachelor's";
     public static final String GRADUATION_DATE = "07/2025";
     public static final String HOUSING_PAYMENT = "800";
-    public static final String INCOME_TYPE = "Salary";
+    public static final String INCOME_TYPE = "salary";
     public static final String ANNUAL_SALARY = "65000";
-    //public static final String PREVIOUS_INCOME = "65000";
     public static final String LOAN_AMOUNT = "42000";
     public static final String PASSWORD = "Passw0rd";
 
@@ -40,17 +36,17 @@ public class StudentLoanFormTest {
     public void setUp() {
         driver = Driver.getInstance();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(TIMEOUT, TimeUnit.SECONDS);
     }
 
-//    @AfterClass
-//    public void afterScenario() {
-//        Driver.closeInstance();
-//    }
+    @AfterClass
+    public void afterScenario() {
+        Driver.closeInstance();
+    }
 
     @Test
     public void testStudentLoanForm() {
         driver.get("https://www.credible.com/?vt_disabled=true");
+
         mainPage = new MainPage(driver);
         mainPage.selectStudentLoanProduct();
         studentLoanFoamPage = mainPage.goToStudentLoanForm();
@@ -68,7 +64,6 @@ public class StudentLoanFormTest {
                 .addEmploymentIncome(INCOME_TYPE, ANNUAL_SALARY)
                 .continueToNextStep()
                 .continueToNextStep()
-                //studentLoanFoamPage.addPreviousEmploymentIncome(PREVIOUS_INCOME);
                 .addCurrentEnrollmentStatus()
                 .chooseYearOfStudy()
                 .chooseSchoolTerm()

@@ -46,7 +46,7 @@ public class StudentLoanFormPage {
     @FindBy(xpath = "//input[@name='studentAddress.unit']")
     private WebElement addressUnitField;
 
-    @FindBy(xpath = "//input[@name='inschoolPrequalForm.studentCitizenshipStatus-radio']/parent::div")
+    @FindBy(xpath = "//input[@name='inschoolPrequalForm.studentCitizenshipStatus-radio']/following-sibling::div")
     private WebElement confirmUsCitizenshipButton;
 
     @FindBy(xpath = "//input[@name='studentEducation.name']")
@@ -55,7 +55,7 @@ public class StudentLoanFormPage {
     @FindBy(xpath = "(//div[@data-test-id='search-results']/ul/li/div/span)[1]")
     private WebElement collegeSearchResult;
 
-    @FindBy(xpath = "//*[text()=\"Bachelor's\"]")
+    @FindBy(xpath = "//input[@value='bachelors']/parent::div")
     private WebElement aimedCollegeDegree;
 
     @FindBy(xpath = "//input[@name='studentCompletionDate']")
@@ -64,7 +64,7 @@ public class StudentLoanFormPage {
     @FindBy(xpath = "//input[@name='studentHousingPayment']")
     private WebElement monthlyHousingPaymentField;
 
-    @FindBy(xpath = "//input[@value='employed_full_time']/following-sibling::div")
+    @FindBy(xpath = "//input[@value='employed_full_time']/parent::div")
     private WebElement employmentStatusButton;
 
     @FindBy(xpath = "//select[@name='studentEmploymentIncomeType']")
@@ -79,10 +79,10 @@ public class StudentLoanFormPage {
     @FindBy(xpath = "//span[text()='Full-time']")
     private WebElement currentEnrollmentStatusButton;
 
-    @FindBy(xpath = "//span[text()='1st year']")
+    @FindBy(xpath = "//input[@name='inschoolPrequalForm.studentCurrentYear-radio']/parent::div")
     private WebElement currentYearOfStudyButton;
 
-    @FindBy(xpath = "//span[text()='Fall 2021']")
+    @FindBy(xpath = "//input[@value='fall-only-2021']/parent::div")
     private WebElement schoolTermButton;
 
     @FindBy(xpath = "//input[@id='studentRequestedLoanAmount']")
@@ -91,7 +91,7 @@ public class StudentLoanFormPage {
     public StudentLoanFormPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(driver, 8);
     }
 
     public StudentLoanFormPage chooseRole() {
@@ -101,7 +101,9 @@ public class StudentLoanFormPage {
 
     public StudentLoanFormPage addStudentName(String firstName, String lastName) {
         wait.until(ExpectedConditions.elementToBeClickable(studentFirstNameField));
+        studentFirstNameField.clear();
         studentFirstNameField.sendKeys(firstName);
+        studentLastNameField.clear();
         studentLastNameField.sendKeys(lastName);
         return continueToNextStep();
     }
@@ -112,17 +114,22 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage addStudentDob(String dob) {
+        wait.until(ExpectedConditions.elementToBeClickable(studentDobField));
+        studentDobField.clear();
         studentDobField.sendKeys(dob);
         return continueToNextStep();
     }
 
     public StudentLoanFormPage addPhoneNumber(String phoneNumber) {
+        wait.until(ExpectedConditions.elementToBeClickable(studentPhoneNumberField));
+        studentPhoneNumberField.clear();
         studentPhoneNumberField.sendKeys(phoneNumber);
         return continueToNextStep();
     }
 
     public StudentLoanFormPage addAddress(String address, String unitNumber) {
         wait.until(ExpectedConditions.elementToBeClickable(addressField));
+        addressField.click();
         addressField.sendKeys(address);
         wait.until(ExpectedConditions.elementToBeClickable(addressOption));
         addressOption.click();
@@ -132,19 +139,23 @@ public class StudentLoanFormPage {
 
     public StudentLoanFormPage chooseCitizenshipStatus(boolean citizenship) {
         if (citizenship) {
-            wait.until(ExpectedConditions.elementToBeClickable(confirmUsCitizenshipButton));
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             confirmUsCitizenshipButton.click();
         }
         return this;
     }
 
     public StudentLoanFormPage addCollege(String collegeName) {
-        //wait.until(ExpectedConditions.elementToBeClickable(collegeNameField));
         try {
-            Thread.sleep(3000);
+            Thread.sleep(4000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         collegeNameField.sendKeys(collegeName);
         wait.until(ExpectedConditions.elementToBeClickable(collegeSearchResult));
         collegeSearchResult.click();
@@ -152,24 +163,35 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage chooseCollegeDegree(String degree) {
-        wait.until(ExpectedConditions.elementToBeClickable(aimedCollegeDegree));
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         aimedCollegeDegree.click();
         return this;
     }
 
     public StudentLoanFormPage addExpectedGraduationDate(String graduationDate) {
+        wait.until(ExpectedConditions.elementToBeClickable(expectedGraduationDateField));
+        expectedGraduationDateField.clear();
         expectedGraduationDateField.sendKeys(graduationDate);
         return continueToNextStep();
     }
 
     public StudentLoanFormPage addMonthlyHousingPayment(String housingPayment) {
         wait.until(ExpectedConditions.elementToBeClickable(monthlyHousingPaymentField));
+        monthlyHousingPaymentField.clear();
         monthlyHousingPaymentField.sendKeys(housingPayment);
         return continueToNextStep();
     }
 
     public StudentLoanFormPage chooseEmploymentStatus() {
-        wait.until(ExpectedConditions.elementToBeClickable(employmentStatusButton));
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         employmentStatusButton.click();
         return this;
     }
@@ -181,29 +203,40 @@ public class StudentLoanFormPage {
         return continueToNextStep();
     }
 
-//    public StudentLoanFormPage addPreviousEmploymentIncome(String income) {
-//        wait.until(ExpectedConditions.elementToBeClickable(previousIncomeField));
-//        previousIncomeField.sendKeys(income);
-//        return continueToNextStep();
-//    }
-
     public StudentLoanFormPage addCurrentEnrollmentStatus() {
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         currentEnrollmentStatusButton.click();
         return this;
     }
 
     public StudentLoanFormPage chooseYearOfStudy() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         currentYearOfStudyButton.click();
         return this;
     }
 
     public StudentLoanFormPage chooseSchoolTerm() {
+        try {
+            Thread.sleep(4000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         schoolTermButton.click();
         return this;
     }
 
     public StudentLoanFormPage addLoanAmount(String amount) {
+        wait.until(ExpectedConditions.elementToBeClickable(loanAmountField));
+        loanAmountField.clear();
         loanAmountField.sendKeys(amount);
-        return this;
+        return continueToNextStep();
     }
 }
