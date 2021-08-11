@@ -1,9 +1,11 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -12,6 +14,9 @@ public class StudentLoanFormPage {
 
     private WebDriver driver;
     private WebDriverWait wait;
+
+    private By controlElement = By.xpath("//form/../../..");
+    public static final int TIMEOUT = 5;
 
     @FindBy(xpath = "//div/p[text()='Student']/..")
     private WebElement studentLoanButton;
@@ -52,7 +57,7 @@ public class StudentLoanFormPage {
     @FindBy(xpath = "//input[@name='studentEducation.name']")
     private WebElement collegeNameField;
 
-    @FindBy(xpath = "(//div[@data-test-id='search-results']/ul/li/div/span)[1]")
+    @FindBy(xpath = "//span[text()='Boise State University']//ancestor::li")
     private WebElement collegeSearchResult;
 
     @FindBy(xpath = "//input[@value='bachelors']/parent::div")
@@ -91,15 +96,17 @@ public class StudentLoanFormPage {
     public StudentLoanFormPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
         this.driver = driver;
-        wait = new WebDriverWait(driver, 8);
+        wait = new WebDriverWait(driver, TIMEOUT);
     }
 
     public StudentLoanFormPage chooseRole() {
+        waitForAnimation();
         studentRoleButton.click();
         return this;
     }
 
     public StudentLoanFormPage addStudentName(String firstName, String lastName) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(studentFirstNameField));
         studentFirstNameField.clear();
         studentFirstNameField.sendKeys(firstName);
@@ -109,11 +116,13 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage continueToNextStep() {
+        waitForAnimation();
         continueButton.click();
         return this;
     }
 
     public StudentLoanFormPage addStudentDob(String dob) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(studentDobField));
         studentDobField.clear();
         studentDobField.sendKeys(dob);
@@ -121,6 +130,7 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage addPhoneNumber(String phoneNumber) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(studentPhoneNumberField));
         studentPhoneNumberField.clear();
         studentPhoneNumberField.sendKeys(phoneNumber);
@@ -128,6 +138,7 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage addAddress(String address, String unitNumber) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(addressField));
         addressField.click();
         addressField.sendKeys(address);
@@ -138,24 +149,18 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage chooseCitizenshipStatus(boolean citizenship) {
+        waitForAnimation();
         if (citizenship) {
-            try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            wait.until(ExpectedConditions.elementToBeClickable(confirmUsCitizenshipButton));
             confirmUsCitizenshipButton.click();
         }
         return this;
     }
 
     public StudentLoanFormPage addCollege(String collegeName) {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(collegeNameField));
+        collegeNameField.clear();
         collegeNameField.sendKeys(collegeName);
         wait.until(ExpectedConditions.elementToBeClickable(collegeSearchResult));
         collegeSearchResult.click();
@@ -163,16 +168,14 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage chooseCollegeDegree(String degree) {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(aimedCollegeDegree));
         aimedCollegeDegree.click();
         return this;
     }
 
     public StudentLoanFormPage addExpectedGraduationDate(String graduationDate) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(expectedGraduationDateField));
         expectedGraduationDateField.clear();
         expectedGraduationDateField.sendKeys(graduationDate);
@@ -180,6 +183,7 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage addMonthlyHousingPayment(String housingPayment) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(monthlyHousingPaymentField));
         monthlyHousingPaymentField.clear();
         monthlyHousingPaymentField.sendKeys(housingPayment);
@@ -187,56 +191,61 @@ public class StudentLoanFormPage {
     }
 
     public StudentLoanFormPage chooseEmploymentStatus() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(employmentStatusButton));
         employmentStatusButton.click();
         return this;
     }
 
     public StudentLoanFormPage addEmploymentIncome(String incomeType, String annualSalary) {
-        Select selectIncome = new Select(incomeTypeDropDown);
-        selectIncome.selectByValue(incomeType);
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(incomeTypeDropDown));
+        Select selectIncomeType = new Select(incomeTypeDropDown);
+        selectIncomeType.selectByValue(incomeType);
+        wait.until(ExpectedConditions.elementToBeClickable(annualSalaryField));
+        annualSalaryField.clear();
         annualSalaryField.sendKeys(annualSalary);
         return continueToNextStep();
     }
 
     public StudentLoanFormPage addCurrentEnrollmentStatus() {
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(currentEnrollmentStatusButton));
         currentEnrollmentStatusButton.click();
         return this;
     }
 
     public StudentLoanFormPage chooseYearOfStudy() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(currentYearOfStudyButton));
         currentYearOfStudyButton.click();
         return this;
     }
 
     public StudentLoanFormPage chooseSchoolTerm() {
-        try {
-            Thread.sleep(4000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitForAnimation();
+        wait.until(ExpectedConditions.elementToBeClickable(schoolTermButton));
         schoolTermButton.click();
         return this;
     }
 
     public StudentLoanFormPage addLoanAmount(String amount) {
+        waitForAnimation();
         wait.until(ExpectedConditions.elementToBeClickable(loanAmountField));
         loanAmountField.clear();
         loanAmountField.sendKeys(amount);
         return continueToNextStep();
+    }
+
+    public void waitForAnimation() {
+        WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+        wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                if (driver.findElement(controlElement).getAttribute("class").isEmpty()) {
+                    return Boolean.TRUE;
+                }
+                return null;
+            }
+        });
     }
 }

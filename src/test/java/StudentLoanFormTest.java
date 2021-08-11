@@ -1,4 +1,4 @@
-import core.Driver;
+import core.driver.Driver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -10,7 +10,7 @@ import pages.StudentLoanFormPage;
 public class StudentLoanFormTest {
 
     private WebDriver driver;
-    private StudentLoanFormPage studentLoanFoamPage;
+    private StudentLoanFormPage studentLoanFormPage;
     private MainPage mainPage;
     private SignUpPage signUpPage;
 
@@ -49,8 +49,8 @@ public class StudentLoanFormTest {
 
         mainPage = new MainPage(driver);
         mainPage.selectStudentLoanProduct();
-        studentLoanFoamPage = mainPage.goToStudentLoanForm();
-        studentLoanFoamPage.chooseRole()
+        studentLoanFormPage = mainPage.goToStudentLoanForm();
+        studentLoanFormPage.chooseRole()
                 .addStudentName(STUDENT_FIRST_NAME, STUDENT_LAST_NAME)
                 .addStudentDob(STUDENT_DOB)
                 .addPhoneNumber(PHONE_NUMBER)
